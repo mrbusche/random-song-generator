@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <h1>Mara's Random Song Generator</h1>
+    <h1>🎶Mara's Random Song Generator🎹</h1>
     <h2 id="results">&nbsp;</h2>
     <h3>You've played <span id="songCount"></span></h3>
     <input
@@ -60,7 +60,7 @@
 
         document.getElementById("songCount").innerHTML = `${count} song${
           count !== 1 ? "s" : ""
-        } today ${"!".repeat(count)}`;
+        } today ${"!".repeat(count)} ${count === 0 ? "🙁" : ""}`;
         count++;
       };
 

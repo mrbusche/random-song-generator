@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Random Song Generator</title>
+  </head>
+
+  <body>
+    <h1>Mara's Random Song Generator</h1>
+    <h2 id="results">&nbsp;</h2>
+    <h3>You've played <span id="songCount"></span></h3>
+    <input
+      type="button"
+      id="next"
+      name="next"
+      value="Next Song"
+      aria-label="Next Song"
+    />
+
+    <script>
+      let count = 0;
+      const songs = [
+        "Dreams Come True + Variation",
+        "Night Storm + Variation",
+        "Jackson Blues + Variation x 4",
+        "Honey Dew + Variation",
+        "Chester Chills Out + Variation",
+        "Ode to Joy",
+        "Bishop St Blues + Variation x 4",
+        "Amazing Grace + Variation",
+        "Fur Elise",
+        "Alma Mater Blues",
+        "I'll be There + Variation",
+        "Alma Mater Blues 2nd Section",
+        "Ode to Joy 2nd Section + Variation",
+        "Amazing Grace 7th chords + Variation",
+        "Dog? + Variation",
+        "Alma 3rd Section + Variation",
+        "Minuet in G",
+        "Star Spangled Banner",
+        "Sleeping",
+        "Light Blue + Variation",
+        "Fur Elise 2nd Section + Variation",
+        "The Pipes + Variation",
+        "Light Blue 3rd Section + Variation",
+        "Minuet in G Middle Section + Variation",
+        "Star Spangled Banner 2",
+        "Fluff Pie + Variation",
+        "Walking with Billy + Variation x 4",
+        "Greensleeves + Variation",
+        "She'll be Comin Round + Variation",
+        "Tear for a Friend + Variation",
+        "Family Tree + Variation",
+      ];
+
+      const nextSong = () => {
+        const song = songs[Math.floor(Math.random() * songs.length)];
+        document.getElementById("results").innerHTML = song;
+
+        document.getElementById("songCount").innerHTML = `${count} song${
+          count !== 1 ? "s" : ""
+        } today ${"!".repeat(count)}`;
+        count++;
+      };
+
+      document.getElementById("next").onclick = nextSong;
+
+      window.onload = function () {
+        nextSong();
+      };
+    </script>
+  </body>
+</html>

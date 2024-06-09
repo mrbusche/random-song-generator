@@ -20,7 +20,7 @@
 
     <script>
       let count = 0;
-      const songs = [
+      let songs = [
         "Dreams Come True + Variation 🌠",
         "Night Storm + Variation 🌩️",
         "Jackson Blues + Variation x 4 🎸",
@@ -55,12 +55,31 @@
       ];
 
       const nextSong = () => {
-        const song = songs[Math.floor(Math.random() * songs.length)];
-        document.getElementById("results").innerHTML = song;
+        let selectedSong = songs[Math.floor(Math.random() * songs.length)];
+        if (!selectedSong) {
+          selectedSong = "You played all the songs today!";
+          document.getElementById("next").remove();
+        }
+        document.getElementById("results").innerHTML = selectedSong;
+        songs = songs.filter((song) => song !== selectedSong);
 
-        document.getElementById("songCount").innerHTML = `${count} song${
-          count !== 1 ? "s" : ""
-        } today ${"!".repeat(count)} ${count === 0 ? "🙁" : ""}`;
+        document.getElementById("songCount").innerHTML = `
+        ${count} song${count !== 1 ? "s" : ""} today${"!".repeat(count)} ${
+          count === 0 ? "🙁" : ""
+        }
+        ${count >= 5 ? "<p>You have Level " + count + " Gyatt Rizz!</p>" : ""}
+        ${count >= 10 ? "<p>You are The Rizzler!!</p>" : ""}
+        ${
+          count >= 10 && count < 15
+            ? '<p><img src="img/rizzler.png" alt="rizzler"></p>'
+            : ""
+        }
+        ${
+          count >= 15
+            ? 'You are the Rizzard of Oz!!!!<br><img src="img/rizzard.png" alt="rizzler">'
+            : ""
+        }
+        `;
         count++;
       };
 
